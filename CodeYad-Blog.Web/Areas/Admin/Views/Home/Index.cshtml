@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["selected"] = "index";
+}
+@*<section class="content-header">
+    <h1>
+       ذبیح رابیتس
+        <small>موسسه خیریه مرد میدان</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> خانه</a></li>
+  
+    </ol>
+</section>
+<section class="content">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">داشبورد</h3>
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+                        title="جمع شود">
+                    <i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="حذف">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body">
+          ذبیح رابیتس
+        </div>
+        <div class="box-footer">
+            ذبیح الله محمدی
+        </div>
+    </div>
+</section>
+*@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ajax Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <button id="ajaxButton">Send Ajax Request</button>
+    <div id="result"></div>
+
+    <script>
+        $(document).ready(function() {
+            $('#ajaxButton').click(function() {
+                $.ajax({
+                    url: '/Admin/Home/AjaxRequest', // URL مورد نظر برای ارسال درخواست
+                    type: 'GET',
+                    success: function(data) {
+                        $('#result').text(data); // نمایش پاسخ دریافتی در عنصر مورد نظر
+                    },
+                    error: function() {
+                        $('#result').text('Error occurred.'); // در صورت بروز خطا، پیغام خطا را نمایش دهید
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+﻿@model CodeYad_Blog.Web.Areas.Admin.Models.ShowSlids.CreateShowSlidViewModel
+@{
+    ViewData["title"] = "افزودن دسته بندی";
+ 
+}
+<section class="content">
+    <form class="box box-danger" method="post" asp-area="Admin" asp-controller="ShowSlid" asp-action="Create" enctype="multipart/form-data">
+        <div class="box-body row">
+            <div class="col-md-6">
+                @Html.EditorFor(m => m.Title)
+            </div>
+            <div class="col-md-12">
+                @Html.EditorFor(m => m.ImageFile)
+            </div>
+             <div class="col-md-12">
+                @Html.EditorFor(m => m.ImageName)
+            </div>
+
+
+        </div>
+        <div class="box-footer">
+            <button class="btn btn-success" type="submit">ثبت اطلاعات</button>
+        </div>
+    </form>
+</section>

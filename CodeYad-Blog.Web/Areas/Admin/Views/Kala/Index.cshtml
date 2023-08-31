@@ -1,0 +1,24 @@
+﻿@model CodeYad_Blog.Web.Areas.Admin.Models.Kalas.SendMessageViewModel
+
+@{
+        ViewData["title"] = "مدیریت کالا";
+   
+   
+}
+<form method="post" action="/Admin/Kala/SendMessages" class="login100-from validate-form">
+   <div>
+       <input asp-for="Name" autocomplete="off" class="input100"type="text"placeholder="نام خود  را وارد کنید " />
+   </div>
+   <div>
+       
+       <input asp-for="Subject" autocomplete="off" class="input100"type="text"placeholder="موصوع خود  را وارد کنید " />
+
+   </div>
+      <div>
+       <input asp-for="PhoneNumber" autocomplete="off" class="input100"type="text"placeholder="تلفن خود  را وارد کنید " />
+   </div>
+      <div>
+       <input asp-for="Message" autocomplete="off" class="input100"type="text"placeholder="پیام خود  را وارد کنید " />
+   </div>
+ <button type="submit"class="login100-from-btn">ارسال</button>
+</form>

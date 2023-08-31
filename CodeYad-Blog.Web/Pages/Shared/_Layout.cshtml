@@ -1,0 +1,86 @@
+﻿@using CodeYad_Blog.CoreLayer.Services.Categories
+@using CodeYad_Blog.CoreLayer.Services.ShowSlids
+@using CodeYad_Blog.CoreLayer.Services.Kalas
+@inject ICategoryService _categoryService;
+@inject IShowSlidService _showSlidService;
+@inject IKalaService _kalaService;
+@{
+    var categories = _categoryService.GetAllCategory();
+     var showslid = _showSlidService.GetAllShowSlid();
+       var kala = _kalaService.GetAllKala();
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>@ViewData["Title"]</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="robots" content="index, follow">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+    @await RenderSectionAsync("MetaTags", false)
+
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,600,700%7CSource+Sans+Pro:400,600,700' rel='stylesheet'>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/font-icons.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    @await RenderSectionAsync("MetaLink", false)
+    <link rel="shortcut icon" href="/img/mmgh.png">
+    <link rel="apple-touch-icon" href="/img/mmgh.png">
+
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="vendor/animate.css/animate.min.css" rel="stylesheet">
+ 
+  <link href="vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+
+    <script src="/js/lazysizes.min.js"></script>
+</head>
+<body class="bg-light style-default style-rounded">
+    <div class="loading">
+        <img src="/loading.svg" alt="loading...">
+    </div>
+    <div class="loader-mask">
+        <div class="loader">
+            <div></div>
+        </div>
+    </div>
+      
+    <div class="content-overlay"></div> 
+     <partial name="Headers/_SideNav" model="categories"/>
+         <main class="main oh" id="main">
+     <partial name="Headers/_TopHeader"/>
+           <partial name="Headers/_MainHeader" model="categories"/>  
+   
+        @RenderBody()  
+         @await RenderSectionAsync("Kala", false)
+   <partial name="_ShowSlid" model="showslid"/>
+ 
+        <partial name="_Footer" />
+        <div id="back-to-top">
+            <a href="#top" aria-label="Go to top"><i class="ui-arrow-up"></i></a>
+        </div>
+    </main>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/easing.min.js"></script>
+    <script src="/js/owl-carousel.min.js"></script>
+    <script src="/js/flickity.pkgd.min.js"></script>
+    <script src="/js/twitterFetcher_min.js"></script>
+    <script src="/js/jquery.newsTicker.min.js"></script>
+    <script src="/js/modernizr.min.js"></script>
+    <script src="/js/scripts.js"></script>
+    <script src="/js/custom.js"></script>
+
+    @await RenderSectionAsync("Scripts", false)
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+﻿@page
+@model PrivacyModel
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ajax Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <button id="ajaxButton">Send Ajax Request</button>
+    <div id="result"></div>
+
+    <script>
+        $(document).ready(function() {
+            $('#ajaxButton').click(function() {
+                $.ajax({
+                    url: '/Home/AjaxRequest', // URL مورد نظر برای ارسال درخواست
+                    type: 'GET',
+                    success: function(data) {
+                        $('#result').text(data); // نمایش پاسخ دریافتی در عنصر مورد نظر
+                    },
+                    error: function() {
+                        $('#result').text('Error occurred.'); // در صورت بروز خطا، پیغام خطا را نمایش دهید
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

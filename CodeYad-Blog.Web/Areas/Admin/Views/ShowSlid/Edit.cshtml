@@ -1,0 +1,40 @@
+﻿@model CodeYad_Blog.Web.Areas.Admin.Models.ShowSlids.EditShowSlidViewModel
+@using CodeYad_Blog.CoreLayer.Services.ShowSlids;
+@inject IShowSlidService _showSlidService;
+@{
+    ViewData["title"] = "ویرایش  مقاله";
+    ViewData["selected"] = "showslid";
+    var shoslid = _showSlidService.GetAllShowSlid();
+}
+<section class="content-header">
+    <h1>
+        @ViewData["title"]
+    </h1>
+    <ol class="breadcrumb">
+        <li><a asp-area="Admin" asp-controller="Home" asp-action="Index"><i class="fa fa-dashboard"></i> خانه</a></li>
+        <li><a asp-area="Admin" asp-controller="ShowSlid" asp-action="Index">کاروسل</a></li>
+        <li class="active">@ViewData["title"]</li>
+    </ol>
+</section>
+<section class="content">
+    <form class="box box-danger" method="post" asp-area="Admin" asp-controller="ShowSlid" asp-action="Edit" enctype="multipart/form-data">
+        <div class="box-body row">
+            <div class="col-md-6">
+                @Html.EditorFor(m => m.Title)
+            </div>
+
+            <div class="col-md-12">
+                @Html.EditorFor(m => m.ImageFile)
+            </div>
+       
+             @foreach (var item in shoslid.Where(c => c.Id == null))
+                        {
+                            <option value="@item.Id">@item.Title</option>
+                        }
+                   
+        </div>
+        <div class="box-footer">
+            <button class="btn btn-success" type="submit">ثبت اطلاعات</button>
+        </div>
+    </form>
+</section>
